@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import '../styles/Calendar.css'
 
-const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 const WeekTitles = () => (
   <div className="weeks">
@@ -9,4 +9,4 @@ const WeekTitles = () => (
   </div>
 )
 
-export default WeekTitles;
+export default WeekTitles
