@@ -1,12 +1,13 @@
-import React from 'react';
-import Layout from './components/Layout';
+import React from 'react'
+import Layout from './components/Layout'
+import Calendar from './components/Calendar'
 
 const App = () => {
   return (
     <Layout>
-      <div>Hello world</div>
+      <Calendar />
     </Layout>
   )
 }
 
-export default App;
+export default App
