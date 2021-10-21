@@ -1,4 +1,4 @@
-.container {
+.calendar-container {
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -13,4 +13,22 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.weeks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.item {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  font-weight: 500;
 }
