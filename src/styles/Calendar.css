@@ -6,3 +6,11 @@
   align-items: center;
   width: 500px
 }
+
+.header {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
