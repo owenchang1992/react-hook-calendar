@@ -3,11 +3,13 @@ import '../styles/Calendar.css'
 import CalenderHeader from './CalendarHeader'
 import WeekTitles from './WeekTitles'
 import useCalendar from '../costomHook/useCalendar'
+import CalendarDays from './CalendarDays'
 
 const Calendar = () => {
   const {
     year,
     month,
+    days,
     monthForward,
     monthBackward,
   }  = useCalendar();
@@ -21,6 +23,7 @@ const Calendar = () => {
         onForwardClick={monthForward}
       />
       <WeekTitles />
+      <CalendarDays days={days}/>
     </div>
   )
 }

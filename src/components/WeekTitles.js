@@ -4,7 +4,7 @@ import '../styles/Calendar.css'
 const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 const WeekTitles = () => (
-  <div className="weeks">
+  <div className="weeks row">
     {weeks.map((title) => <div key={title} className="item">{title}</div>)}
   </div>
 )
