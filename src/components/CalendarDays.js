@@ -1,12 +1,13 @@
 import React from 'react'
 import '../styles/Calendar.css'
-import { CURRENT_MONTH } from '../constant'
+import { findTag } from '../utils'
 
 const CalendarDays = ({ days }) => {
   if (!days) return null;
 
-  const getColor = (day) => 
-    day.tags.findIndex((tag) => tag === CURRENT_MONTH) === -1 ? 'not-current-month' : ''
+  const getClass = (day) => {
+    if (!findTag(day, CURRENT_MONTH)) return 'not-current-month'
+  }
 
   return (
     <div className="row">
@@ -14,7 +15,7 @@ const CalendarDays = ({ days }) => {
         days.map((day) => (
           <div
             key={`${day.tags[0]} ${day.title}`}
-            className={`item ${getColor(day)}`}
+            className={`item ${getClass(day)}`}
           >
             {day.title}
           </div>
