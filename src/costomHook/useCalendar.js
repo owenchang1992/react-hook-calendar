@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH } from '../constant'
 
 const useCalendar = () => {
   const [month, setMonth] = useState(new Date().getMonth())
@@ -34,28 +35,30 @@ const useCalendar = () => {
     const lastDayIndex = daysInMonth + firstDayIndex - 1
     const newDays = []
 
-    const addDays = (days, initDay, length) => {
+    const addDays = (days, initDay, length, options) => {
+      const tags = [];
+      if (options && options.tag) tags.push(options.tag)
+
       for(let i=initDay; i < initDay + length; i++) {
-        days.push(i)
+        days.push({
+          title: i,
+          tags
+        })
       }
 
       return days
     }
 
     // add days of previous month to newDays
-    addDays(newDays, firstDayOfList, firstDayIndex)
+    addDays(newDays, firstDayOfList, firstDayIndex, { tag: PREVIOUS_MONTH })
 
     // add days of current month to newDays
-    addDays(newDays, 1, daysInMonth)
+    addDays(newDays, 1, daysInMonth, { tag: CURRENT_MONTH } )
 
     // add days of next month to newDays
-    addDays(newDays, 1, 41 - lastDayIndex)
+    addDays(newDays, 1, 41 - lastDayIndex, { tag: NEXT_MONTH })
 
-    setDays({
-      firstDayIndex,
-      lastDayIndex,
-      dayList: newDays
-    })
+    setDays(newDays)
   }
 
   useEffect(() => {
