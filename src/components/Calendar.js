@@ -28,7 +28,8 @@ const Calendar = () => {
     selectMonth,
     decadeCounter,
     decadeForward,
-    decadeBackward
+    decadeBackward,
+    setSelectedDay,
   }  = useCalendar();
 
   const [view, setView] = useState(null)
@@ -100,6 +101,7 @@ const Calendar = () => {
     <div className="calendar-container">
       <DatePicker
         selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
         onIconClick={() => setView(DATE_VIEW)}
       />
       { getView(view) }

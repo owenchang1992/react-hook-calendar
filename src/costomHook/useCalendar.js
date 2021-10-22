@@ -144,7 +144,8 @@ const useCalendar = () => {
     selectMonth,
     decadeCounter,
     decadeForward,
-    decadeBackward
+    decadeBackward,
+    setSelectedDay
   }
 }
 

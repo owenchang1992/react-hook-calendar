@@ -98,6 +98,7 @@
   font-size: 1.1rem;
   gap: 10px;
   border-radius: 5px;
+  border: 2px solid #ddd;
 }
 
 .date-picker-icon:hover {
@@ -106,4 +107,15 @@
 
 .date-picker-title:hover {
   border: 2px solid rgb(0, 162, 255);
+}
+
+.input {
+  padding: 0;
+  width: calc(100% - 40px);
+  height: 100%;
+  font-size: 1.1rem;
+  border: 0px;
+  outline: none;
+  line-height: inherit;
+  text-align: center;
 }
