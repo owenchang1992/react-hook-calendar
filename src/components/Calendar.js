@@ -5,6 +5,7 @@ import WeekTitles from './WeekTitles'
 import useCalendar from '../costomHook/useCalendar'
 import CalendarDays from './CalendarDays'
 import CalendarMonths from './CalendarMonths'
+import CalendarYears from './CalendarYears'
 
 import { DATE_VIEW, SELECT_MONTH, SELECT_YEAR } from '../constant'
 import { getDateViewTitle, getDecadeTitle } from '../utils'
@@ -13,15 +14,19 @@ import '../styles/Calendar.css'
 
 const Calendar = () => {
   const {
-    year,
-    month,
     days,
     selectDay,
-    monthForward,
-    monthBackward,
+    year,
     yearForward,
     yearBackward,
-    selectMonth
+    selectYear,
+    month,
+    monthForward,
+    monthBackward,
+    selectMonth,
+    decadeCounter,
+    decadeForward,
+    decadeBackward
   }  = useCalendar();
 
   const [view, setView] = useState(DATE_VIEW)
@@ -50,10 +55,18 @@ const Calendar = () => {
         return (
           <>
             <CalendarHeader
-              title={`${getDecadeTitle(year)}`}
+              title={`${getDecadeTitle(year, decadeCounter)}`}
               onTitleClick={() => setView(DATE_VIEW)}
-              onBackClick={yearBackward}
-              onForwardClick={yearForward}
+              onBackClick={decadeBackward}
+              onForwardClick={decadeForward}
+            />
+            <CalendarYears
+              year={year}
+              decadeCounter={decadeCounter}
+              onClick={(year) => {
+                setView(SELECT_MONTH)
+                selectYear(year)
+              }}
             />
           </>
         )

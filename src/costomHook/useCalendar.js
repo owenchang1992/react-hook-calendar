@@ -6,7 +6,8 @@ const useCalendar = () => {
   const [month, setMonth] = useState(new Date().getMonth())
   const [year, setYear] = useState(new Date().getFullYear())
   const [days, setDays] = useState(null)
-  const [selectedDay, setSelectedDay] = useState();
+  const [selectedDay, setSelectedDay] = useState(null)
+  const [decadeCounter, setDecadeCounter] = useState(0)
 
   const monthForward = () => {
     if (month === 11) {
@@ -34,6 +35,10 @@ const useCalendar = () => {
 
   const yearBackward = () => setYear(year - 1)
 
+  const decadeForward = () => setDecadeCounter(decadeCounter + 1)
+
+  const decadeBackward = () => setDecadeCounter(decadeCounter - 1)
+
   const selectDay = (day, index) => {
     const updateSelectedDay = (day) => {
       // create new date object
@@ -46,6 +51,11 @@ const useCalendar = () => {
   }
 
   const selectMonth = (month) => setMonth(month)
+
+  const selectYear = (year) => {
+    setDecadeCounter(0)
+    setYear(year)
+  }
 
   const getDays = () => {
     // calculate days in current mouth
@@ -118,15 +128,19 @@ const useCalendar = () => {
   }, [year, month, selectedDay])
 
   return {
-    month,
-    year,
     days,
+    selectDay,
+    year,
     yearForward,
     yearBackward,
-    selectDay,
+    selectYear,
+    month,
     monthForward,
     monthBackward,
-    selectMonth
+    selectMonth,
+    decadeCounter,
+    decadeForward,
+    decadeBackward
   }
 }
 
