@@ -30,6 +30,10 @@ const useCalendar = () => {
     setMonth(month - 1)
   }
 
+  const yearForward = () => setYear(year + 1)
+
+  const yearBackward = () => setYear(year - 1)
+
   const selectDay = (day, index) => {
     const updateSelectedDay = (day) => {
       // create new date object
@@ -115,6 +119,8 @@ const useCalendar = () => {
     month,
     year,
     days,
+    yearForward,
+    yearBackward,
     selectDay,
     monthForward,
     monthBackward,

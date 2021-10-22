@@ -7,3 +7,4 @@ export const TODAY = 'TODAY'
 
 // View Status
 export const DATE_VIEW = 'DATE_VIEW'
+export const SELECT_MONTH = 'SELECT_MONTH'
