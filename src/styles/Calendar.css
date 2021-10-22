@@ -39,6 +39,11 @@
   vertical-align: middle;
   margin: 5px calc(100%/14 - 12px);
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.week-item {
+  cursor: auto;
 }
 
 .selected-item {
@@ -49,10 +54,18 @@
 .icon {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .header-title {
+  padding: 0.3rem 2.5rem;
+  border-radius: 5px;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.header-title:hover {
+  background-color: #ddd;
 }
 
 .not-current-month {
