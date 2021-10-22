@@ -6,6 +6,7 @@ import useCalendar from '../costomHook/useCalendar'
 import CalendarDays from './CalendarDays'
 import CalendarMonths from './CalendarMonths'
 import CalendarYears from './CalendarYears'
+import DatePicker from './DatePicker'
 
 import { DATE_VIEW, SELECT_MONTH, SELECT_YEAR } from '../constant'
 import { getDateViewTitle, getDecadeTitle } from '../utils'
@@ -15,6 +16,7 @@ import '../styles/Calendar.css'
 const Calendar = () => {
   const {
     days,
+    selectedDay,
     selectDay,
     year,
     yearForward,
@@ -29,7 +31,7 @@ const Calendar = () => {
     decadeBackward
   }  = useCalendar();
 
-  const [view, setView] = useState(DATE_VIEW)
+  const [view, setView] = useState(null)
 
   const getView = (view) => {
     switch (view) {
@@ -90,26 +92,16 @@ const Calendar = () => {
           </>
         )
       default:
-        return (
-          <>
-            <CalendarHeader
-              title={getDateViewTitle(year, month)}
-              onTitleClick={() => setView(SELECT_MONTH)}
-              onBackClick={monthBackward}
-              onForwardClick={monthForward}
-            />
-            <WeekTitles />
-            <CalendarDays
-              days={days}
-              selectDay={selectDay}
-            />
-          </>
-        )
+        return null
     }
   }
 
   return (
     <div className="calendar-container">
+      <DatePicker
+        selectedDay={selectedDay}
+        onIconClick={() => setView(DATE_VIEW)}
+      />
       { getView(view) }
     </div>
   )

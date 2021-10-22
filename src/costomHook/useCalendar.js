@@ -6,7 +6,7 @@ const useCalendar = () => {
   const [month, setMonth] = useState(new Date().getMonth())
   const [year, setYear] = useState(new Date().getFullYear())
   const [days, setDays] = useState(null)
-  const [selectedDay, setSelectedDay] = useState(null)
+  const [selectedDay, setSelectedDay] = useState(new Date())
   const [decadeCounter, setDecadeCounter] = useState(0)
 
   const monthForward = () => {
@@ -73,7 +73,10 @@ const useCalendar = () => {
 
     // Add Selected tag for selected day
     const addSelectedTag = (tags, day) => {
-      if (selectedDay && day.getTime() === selectedDay.getTime()) return [...tags, SELECTEDDAY]
+      if (
+        selectedDay
+        && day.getTime() === new Date(selectedDay.getTime()).setHours(0, 0, 0, 0)
+      ) return [...tags, SELECTEDDAY]
       return tags
     }
 
@@ -129,6 +132,7 @@ const useCalendar = () => {
 
   return {
     days,
+    selectedDay,
     selectDay,
     year,
     yearForward,

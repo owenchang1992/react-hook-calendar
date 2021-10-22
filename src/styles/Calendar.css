@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   width: 300px
 }
 
@@ -87,4 +87,23 @@
   margin: 1rem calc(100%/8 - 26px);
   border-radius: 50%;
   cursor: pointer;
+}
+
+.date-picker-title {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  font-size: 1.1rem;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.date-picker-icon:hover {
+  fill:rgb(0, 162, 255)
+}
+
+.date-picker-title:hover {
+  border: 2px solid rgb(0, 162, 255);
 }

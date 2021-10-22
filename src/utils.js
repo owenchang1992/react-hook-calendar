@@ -13,3 +13,9 @@ export const getDecadeTitle = (year, decadeCounter) => {
 
   return `${firstYear}-${lastYear}`
 }
+
+export const date2ISOString = (date) => {
+  const tzOffset = new Date().getTimezoneOffset() * 60000
+
+  return new Date(date.getTime() - tzOffset).toISOString().substring(0, 10)
+}
