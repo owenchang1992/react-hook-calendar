@@ -4,6 +4,7 @@ import CalendarHeader from './CalendarHeader'
 import WeekTitles from './WeekTitles'
 import useCalendar from '../costomHook/useCalendar'
 import CalendarDays from './CalendarDays'
+import CalendarMonths from './CalendarMonths'
 
 import { DATE_VIEW, SELECT_MONTH } from '../constant'
 import { getDateViewTitle } from '../utils'
@@ -20,6 +21,7 @@ const Calendar = () => {
     monthBackward,
     yearForward,
     yearBackward,
+    selectMonth
   }  = useCalendar();
 
   const [view, setView] = useState(DATE_VIEW)
@@ -34,6 +36,13 @@ const Calendar = () => {
               onTitleClick={() => setView(SELECT_MONTH)}
               onBackClick={yearBackward}
               onForwardClick={yearForward}
+            />
+            <CalendarMonths
+              month={month}
+              onClick={(month) => {
+                setView(DATE_VIEW)
+                selectMonth(month)
+              }}
             />
           </>
         )         

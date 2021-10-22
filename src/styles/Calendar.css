@@ -75,3 +75,16 @@
 .today {
   color: #db3d44;
 }
+
+.month-item {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  margin: 1rem calc(100%/8 - 26px);
+  border-radius: 50%;
+  cursor: pointer;
+}

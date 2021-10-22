@@ -45,6 +45,8 @@ const useCalendar = () => {
     updateSelectedDay(day, index)
   }
 
+  const selectMonth = (month) => setMonth(month)
+
   const getDays = () => {
     // calculate days in current mouth
     const daysInMonth = 32 - new Date(year, month, 32).getDate()
@@ -124,6 +126,7 @@ const useCalendar = () => {
     selectDay,
     monthForward,
     monthBackward,
+    selectMonth
   }
 }
 
