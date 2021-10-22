@@ -3,7 +3,7 @@ import '../styles/Calendar.css'
 
 const CalendarYears = ({ year, decadeCounter, onClick }) => {
   const getClass = (title, index) => {
-    if (index === 0 || index === 11) return 'not-current-month'
+    if (index === 0 || index === 11) return 'not-current-target'
     return year === title ? 'selected-item' : ''
   }
 

@@ -9,7 +9,7 @@ const CalendarDays = ({ days, selectDay }) => {
   const getClass = (day) => {
     if (findTag(day, SELECTEDDAY)) return 'selected-item'
     if (findTag(day, TODAY)) return 'today'
-    if (!findTag(day, CURRENT_MONTH)) return 'not-current-month'
+    if (!findTag(day, CURRENT_MONTH)) return 'not-current-target'
   }
 
   return (
