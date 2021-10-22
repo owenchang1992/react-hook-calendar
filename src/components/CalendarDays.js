@@ -15,11 +15,11 @@ const CalendarDays = ({ days, selectDay }) => {
   return (
     <div className="row">
       {
-        days.map((day, index) => (
+        days.map((day) => (
           <div
             key={`${day.tags[0]} ${day.title}`}
             className={`item ${getClass(day)}`}
-            onClick={() => selectDay(day, index)}
+            onClick={() => selectDay(day)}
           >
             {day.title}
           </div>

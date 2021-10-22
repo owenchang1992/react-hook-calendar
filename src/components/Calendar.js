@@ -33,6 +33,25 @@ const Calendar = () => {
 
   const getView = (view) => {
     switch (view) {
+      case DATE_VIEW:
+        return (
+          <>
+            <CalendarHeader
+              title={getDateViewTitle(year, month)}
+              onTitleClick={() => setView(SELECT_MONTH)}
+              onBackClick={monthBackward}
+              onForwardClick={monthForward}
+            />
+            <WeekTitles />
+            <CalendarDays
+              days={days}
+              selectDay={(day) => {
+                setView(null)
+                selectDay(day)
+              }}
+            />
+          </>
+        )
       case SELECT_MONTH: 
         return (
           <>
