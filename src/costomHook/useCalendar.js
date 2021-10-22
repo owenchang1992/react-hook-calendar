@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
-import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH } from '../constant'
+import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH, SELECTEDDAY } from '../constant'
+import { findTag } from '../utils'
 
 const useCalendar = () => {
   const [month, setMonth] = useState(new Date().getMonth())
   const [year, setYear] = useState(new Date().getFullYear())
   const [days, setDays] = useState(null)
+  const [selectedDay, setSelectedDay] = useState();
 
   const monthForward = () => {
     if (month === 11) {
@@ -28,6 +30,17 @@ const useCalendar = () => {
     setMonth(month - 1)
   }
 
+  const selectDay = (day, index) => {
+    const updateSelectedDay = (day) => {
+      // create new date object
+      if (findTag(day, CURRENT_MONTH)) {
+        setSelectedDay(new Date(year, month, day.title))
+      }
+    }
+
+    updateSelectedDay(day, index)
+  }
+
   const getDays = () => {
     const daysInMonth = 32 - new Date(year, month, 32).getDate()
     const firstDayIndex = new Date(year, month).getDay()
@@ -35,14 +48,32 @@ const useCalendar = () => {
     const lastDayIndex = daysInMonth + firstDayIndex - 1
     const newDays = []
 
+    const addSelectedTag = (tags, day) => {
+      if (selectedDay && day.getTime() === selectedDay.getTime()) return [...tags, SELECTEDDAY]
+      return tags
+    }
+
+    const addOptionTag = (options) => {
+      if (options && options.tag) return [options.tag]
+    }
+
     const addDays = (days, initDay, length, options) => {
-      const tags = [];
-      if (options && options.tag) tags.push(options.tag)
+      // Add tag PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH
+      let tags = addOptionTag(options)
 
       for(let i=initDay; i < initDay + length; i++) {
+        // Add Selected tag for selected day
+        let newTag = tags
+        if (options.tag === CURRENT_MONTH) {
+          newTag = addSelectedTag(
+            newTag,
+            new Date(year, month, i)
+          )
+        }
+
         days.push({
           title: i,
-          tags
+          tags: newTag,
         })
       }
 
@@ -63,12 +94,13 @@ const useCalendar = () => {
 
   useEffect(() => {
     getDays()
-  }, [year, month])
+  }, [year, month, selectedDay])
 
   return {
     month,
     year,
     days,
+    selectDay,
     monthForward,
     monthBackward,
   }

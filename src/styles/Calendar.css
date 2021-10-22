@@ -37,7 +37,13 @@
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-  margin: 0 calc(100%/14 - 12px);
+  margin: 5px calc(100%/14 - 12px);
+  border-radius: 50%;
+}
+
+.selected-item {
+  background-color: #db3d44;
+  color: white;
 }
 
 .icon {
@@ -47,4 +53,8 @@
 
 .header-title {
   font-weight: 700;
+}
+
+.not-current-month {
+  color: #eeeeee
 }

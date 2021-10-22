@@ -10,6 +10,7 @@ const Calendar = () => {
     year,
     month,
     days,
+    selectDay,
     monthForward,
     monthBackward,
   }  = useCalendar();
@@ -23,7 +24,10 @@ const Calendar = () => {
         onForwardClick={monthForward}
       />
       <WeekTitles />
-      <CalendarDays days={days}/>
+      <CalendarDays
+        days={days}
+        selectDay={selectDay}
+      />
     </div>
   )
 }
