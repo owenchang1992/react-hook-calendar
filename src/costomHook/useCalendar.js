@@ -42,27 +42,34 @@ const useCalendar = () => {
   }
 
   const getDays = () => {
+    // calculate days in current mouth
     const daysInMonth = 32 - new Date(year, month, 32).getDate()
+
+    // calculate the index of the first day of the current month
     const firstDayIndex = new Date(year, month).getDay()
+
+    // calculate the value of index 0 of day list
     const firstDayOfList = new Date(year, month, -firstDayIndex).getDate() + 1
+
+    // calculate the index of the last day of current month
     const lastDayIndex = daysInMonth + firstDayIndex - 1
     const newDays = []
 
+    // Add Selected tag for selected day
     const addSelectedTag = (tags, day) => {
       if (selectedDay && day.getTime() === selectedDay.getTime()) return [...tags, SELECTEDDAY]
       return tags
     }
 
+    // Add tag PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH
     const addOptionTag = (options) => {
       if (options && options.tag) return [options.tag]
     }
 
     const addDays = (days, initDay, length, options) => {
-      // Add tag PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH
       let tags = addOptionTag(options)
 
       for(let i=initDay; i < initDay + length; i++) {
-        // Add Selected tag for selected day
         let newTag = tags
         if (options.tag === CURRENT_MONTH) {
           newTag = addSelectedTag(
