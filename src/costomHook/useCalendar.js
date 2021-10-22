@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH, SELECTEDDAY } from '../constant'
+import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH, SELECTEDDAY, TODAY } from '../constant'
 import { findTag } from '../utils'
 
 const useCalendar = () => {
@@ -66,6 +66,12 @@ const useCalendar = () => {
       if (options && options.tag) return [options.tag]
     }
 
+    // Add Today tag
+    const addCurrentDayTag = (tags, day) => {
+      if (day.getTime() === new Date().setHours(0, 0, 0, 0)) return [...tags, TODAY]
+      return tags
+    }
+
     const addDays = (days, initDay, length, options) => {
       let tags = addOptionTag(options)
 
@@ -77,6 +83,8 @@ const useCalendar = () => {
             new Date(year, month, i)
           )
         }
+
+        newTag = addCurrentDayTag(newTag, new Date(year, month, i))
 
         days.push({
           title: i,

@@ -58,3 +58,7 @@
 .not-current-month {
   color: #eeeeee
 }
+
+.today {
+  color: #db3d44;
+}

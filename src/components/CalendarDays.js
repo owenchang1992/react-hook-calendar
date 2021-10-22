@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Calendar.css'
-import { CURRENT_MONTH, SELECTEDDAY } from '../constant'
+import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../constant'
 import { findTag } from '../utils'
 
 const CalendarDays = ({ days, selectDay }) => {
@@ -8,6 +8,7 @@ const CalendarDays = ({ days, selectDay }) => {
 
   const getClass = (day) => {
     if (findTag(day, SELECTEDDAY)) return 'selected-item'
+    if (findTag(day, TODAY)) return 'today'
     if (!findTag(day, CURRENT_MONTH)) return 'not-current-month'
   }
 
