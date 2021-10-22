@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/Calendar.css'
 import Icon from './Icon'
 
-const CalenderHeader = ({ title, onBackClick, onForwardClick, onTitleClick }) => {
+const CalendarHeader = ({ title, onBackClick, onForwardClick, onTitleClick }) => {
   return (
     <div className="header">
       <Icon
@@ -18,4 +18,4 @@ const CalenderHeader = ({ title, onBackClick, onForwardClick, onTitleClick }) =>
   )
 }
 
-export default CalenderHeader
+export default CalendarHeader

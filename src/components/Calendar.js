@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import CalenderHeader from './CalendarHeader'
+import CalendarHeader from './CalendarHeader'
 import WeekTitles from './WeekTitles'
 import useCalendar from '../costomHook/useCalendar'
 import CalendarDays from './CalendarDays'
@@ -29,7 +29,7 @@ const Calendar = () => {
       case SELECT_MONTH: 
         return (
           <>
-            <CalenderHeader
+            <CalendarHeader
               title={year}
               onTitleClick={() => setView(SELECT_MONTH)}
               onBackClick={yearBackward}
@@ -40,7 +40,7 @@ const Calendar = () => {
       default:
         return (
           <>
-            <CalenderHeader
+            <CalendarHeader
               title={getDateViewTitle(year, month)}
               onTitleClick={() => setView(SELECT_MONTH)}
               onBackClick={monthBackward}
