@@ -6,8 +6,8 @@ import useCalendar from '../costomHook/useCalendar'
 import CalendarDays from './CalendarDays'
 import CalendarMonths from './CalendarMonths'
 
-import { DATE_VIEW, SELECT_MONTH } from '../constant'
-import { getDateViewTitle } from '../utils'
+import { DATE_VIEW, SELECT_MONTH, SELECT_YEAR } from '../constant'
+import { getDateViewTitle, getDecadeTitle } from '../utils'
 
 import '../styles/Calendar.css'
 
@@ -33,7 +33,7 @@ const Calendar = () => {
           <>
             <CalendarHeader
               title={year}
-              onTitleClick={() => setView(SELECT_MONTH)}
+              onTitleClick={() => setView(SELECT_YEAR)}
               onBackClick={yearBackward}
               onForwardClick={yearForward}
             />
@@ -45,7 +45,18 @@ const Calendar = () => {
               }}
             />
           </>
-        )         
+        )
+      case SELECT_YEAR: 
+        return (
+          <>
+            <CalendarHeader
+              title={`${getDecadeTitle(year)}`}
+              onTitleClick={() => setView(DATE_VIEW)}
+              onBackClick={yearBackward}
+              onForwardClick={yearForward}
+            />
+          </>
+        )
       default:
         return (
           <>
