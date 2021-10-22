@@ -1,9 +1,14 @@
-import React from 'react'
-import '../styles/Calendar.css'
+import React, { useState } from 'react'
+
 import CalenderHeader from './CalendarHeader'
 import WeekTitles from './WeekTitles'
 import useCalendar from '../costomHook/useCalendar'
 import CalendarDays from './CalendarDays'
+
+import { DATE_VIEW } from '../constant'
+import { getDateViewTitle } from '../utils'
+
+import '../styles/Calendar.css'
 
 const Calendar = () => {
   const {
@@ -15,19 +20,31 @@ const Calendar = () => {
     monthBackward,
   }  = useCalendar();
 
+  const [view, setView] = useState(DATE_VIEW)
+
+  const getView = (view) => {
+    switch (view) {
+      default:
+        return (
+          <>
+            <CalenderHeader
+              title={getDateViewTitle(year, month)}
+              onBackClick={monthBackward}
+              onForwardClick={monthForward}
+            />
+            <WeekTitles />
+            <CalendarDays
+              days={days}
+              selectDay={selectDay}
+            />
+          </>
+        )
+    }
+  }
+
   return (
     <div className="calendar-container">
-      <CalenderHeader
-        year={year}
-        month={month}
-        onBackClick={monthBackward}
-        onForwardClick={monthForward}
-      />
-      <WeekTitles />
-      <CalendarDays
-        days={days}
-        selectDay={selectDay}
-      />
+      { getView(view) }
     </div>
   )
 }

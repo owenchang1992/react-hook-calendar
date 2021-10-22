@@ -12,8 +12,6 @@ const CalendarDays = ({ days, selectDay }) => {
     if (!findTag(day, CURRENT_MONTH)) return 'not-current-month'
   }
 
-  console.log(days);
-
   return (
     <div className="row">
       {
