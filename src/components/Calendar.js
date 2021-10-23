@@ -16,7 +16,7 @@ import '../styles/Calendar.css'
 const Calendar = () => {
   const {
     days,
-    selectedDay,
+    selectedDate,
     selectDay,
     year,
     yearForward,
@@ -29,7 +29,7 @@ const Calendar = () => {
     decadeCounter,
     decadeForward,
     decadeBackward,
-    setSelectedDay,
+    setSelectedDate,
   }  = useCalendar();
 
   const [view, setView] = useState(null)
@@ -100,10 +100,10 @@ const Calendar = () => {
   return (
     <div className="acontainer">
       <DatePicker
-        selectedDay={selectedDay}
+        selectedDate={selectedDate}
         onDateComfirm={(date) => {
           setView(null)
-          setSelectedDay(date)}
+          setSelectedDate(date)}
         }
         onInputClick={() => setView(DATE_VIEW)}
       />

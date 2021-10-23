@@ -56,6 +56,6 @@ onYearSelected | function | | called when year is clicked
 ## DatePicker
 Name | Type | Default | Description
 -----| ---- | ---- | -----
-selectedDay | date | current date | selected date
+selectedDate | date | current date | selected date
 onDateComfirm | function | | called when date input comfirmed
 onInputClick | function | | open calendar when input field click
