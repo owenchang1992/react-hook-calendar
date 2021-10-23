@@ -57,6 +57,12 @@ const useCalendar = () => {
     setSelectedDate(new Date(year, selectedMonth, day.title))
   }
 
+  const selectDate = (date) => {
+    setMonth(date.getMonth())
+    setYear(date.getFullYear())
+    setSelectedDate(date)
+  }
+
   const selectMonth = (month) => setMonth(month)
 
   const selectYear = (year) => {
@@ -145,7 +151,7 @@ const useCalendar = () => {
   return {
     days,
     selectedDate,
-    setSelectedDate,
+    selectDate,
     selectDay,
     year,
     yearForward,

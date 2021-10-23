@@ -4,7 +4,7 @@ import { DATE_VIEW } from '../constant'
 import { date2ISOString } from '../utils'
 
 const DatePicker = ({ calendarStore, setView }) => {
-  const { selectedDate, setSelectedDate } = calendarStore
+  const { selectedDate, selectDate } = calendarStore
 
   const getTitle = (date) => date2ISOString(date).substring(0, 10)
 
@@ -24,7 +24,7 @@ const DatePicker = ({ calendarStore, setView }) => {
 
         if (isValidDate(newDate)) {
             setView(null)
-            setSelectedDate(newDate)
+            selectDate(newDate)
         }
       }
     }
