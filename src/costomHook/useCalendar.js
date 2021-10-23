@@ -2,6 +2,16 @@ import { useState, useEffect } from 'react'
 import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH, SELECTEDDAY, TODAY } from '../constant'
 import { findTag } from '../utils'
 
+/**
+ * For controling the data of calendar
+ * month: current month
+ * year: current year
+ * days: list of day { title: DAY_TITLE, tags: [DAY_TAGS]}
+ * selectedDate: select date
+ * decadeCounter: page offset for years view
+ * @returns 
+ */
+
 const useCalendar = () => {
   const [month, setMonth] = useState(new Date().getMonth())
   const [year, setYear] = useState(new Date().getFullYear())
