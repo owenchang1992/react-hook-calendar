@@ -72,42 +72,47 @@ const useCalendar = () => {
     const newDays = []
 
     // Add Selected tag for selected day
-    const addSelectedTag = (tags, day) => {
+    const addSelectedTag = (tags, options) => {
       if (
         selectedDay
-        && day.getTime() === new Date(selectedDay.getTime()).setHours(0, 0, 0, 0)
+        && options.monthState === CURRENT_MONTH
+        && options.date.getTime() === new Date(selectedDay.getTime()).setHours(0, 0, 0, 0)
       ) return [...tags, SELECTEDDAY]
       return tags
     }
 
     // Add tag PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH
-    const addOptionTag = (options) => {
-      if (options && options.tag) return [options.tag]
+    const addMonthTag = (tags, options) => {
+      if (options && options.monthState) return [...tags, options.monthState]
+      return tags
     }
 
     // Add Today tag
-    const addCurrentDayTag = (tags, day) => {
-      if (day.getTime() === new Date().setHours(0, 0, 0, 0)) return [...tags, TODAY]
+    const addCurrentDayTag = (tags, options) => {
+      if (options.date.getTime() === new Date().setHours(0, 0, 0, 0)) return [...tags, TODAY]
       return tags
     }
 
     const addDays = (days, initDay, length, options) => {
-      let tags = addOptionTag(options)
+      const addTags = (options) => {
+        const precesses = [
+          addMonthTag,
+          addSelectedTag,
+          addCurrentDayTag
+        ]
+
+        return precesses.reduce((acc, currentStep) => {
+          return currentStep(acc, options)
+        }, [])
+      }
 
       for(let i=initDay; i < initDay + length; i++) {
-        let newTag = tags
-        if (options.tag === CURRENT_MONTH) {
-          newTag = addSelectedTag(
-            newTag,
-            new Date(year, month, i)
-          )
-        }
-
-        newTag = addCurrentDayTag(newTag, new Date(year, month, i))
-
         days.push({
           title: i,
-          tags: newTag,
+          tags: addTags({
+            ...options,
+            date: new Date(year, month, i)
+          }),
         })
       }
 
@@ -115,13 +120,13 @@ const useCalendar = () => {
     }
 
     // add days of previous month to newDays
-    addDays(newDays, firstDayOfList, firstDayIndex, { tag: PREVIOUS_MONTH })
+    addDays(newDays, firstDayOfList, firstDayIndex, { monthState: PREVIOUS_MONTH })
 
     // add days of current month to newDays
-    addDays(newDays, 1, daysInMonth, { tag: CURRENT_MONTH } )
+    addDays(newDays, 1, daysInMonth, { monthState: CURRENT_MONTH } )
 
     // add days of next month to newDays
-    addDays(newDays, 1, 41 - lastDayIndex, { tag: NEXT_MONTH })
+    addDays(newDays, 1, 41 - lastDayIndex, { monthState: NEXT_MONTH })
 
     setDays(newDays)
   }
