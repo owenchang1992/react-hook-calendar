@@ -50,9 +50,11 @@ const useCalendar = () => {
   const decadeBackward = () => setDecadeCounter(decadeCounter - 1)
 
   const selectDay = (day) => {
-    if (findTag(day, CURRENT_MONTH)) {
-      setSelectedDate(new Date(year, month, day.title))
-    }
+    let selectedMonth = month
+
+    if (findTag(day, PREVIOUS_MONTH)) selectedMonth = month - 1
+    else if (findTag(day, NEXT_MONTH)) selectedMonth = month + 1
+    setSelectedDate(new Date(year, selectedMonth, day.title))
   }
 
   const selectMonth = (month) => setMonth(month)

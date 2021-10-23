@@ -5,6 +5,7 @@ import { date2ISOString } from '../utils'
 
 const DatePicker = ({ calendarStore, setView }) => {
   const { selectedDate, setSelectedDate } = calendarStore
+
   const getTitle = (date) => date2ISOString(date).substring(0, 10)
 
   const [inputString, setInputString] = useState(getTitle(selectedDate))

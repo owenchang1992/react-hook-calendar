@@ -9,8 +9,8 @@ const DateView = ({ calendarStore, setView }) => {
   const {
     monthBackward,
     monthForward,
-    days,
     selectDay,
+    days,
     year,
     month,
   } = calendarStore
