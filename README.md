@@ -13,6 +13,12 @@ yarn start:dev
 yarn build
 ```
 
+# How to select date?
+there's two ways for select date
+1. Edit input field and press "Enter" to confirm
+2. Select date in Calendar
+
+
 # API Properties of Components
 
 ## CalendarHeader
