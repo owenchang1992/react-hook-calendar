@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Calendar.css'
 
-import { monthTitles } from '../constant'
+import { monthTitles } from '../../constant'
 
 const CalendarMonths = ({ month, onMonthSelected }) => {
   const getClass = (index) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Calendar.css'
-import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../constant'
-import { findTag } from '../utils'
+import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../../constant'
+import { findTag } from '../../utils'
 
 const CalendarDays = ({ days, onDateSelected }) => {
   if (!days) return null;

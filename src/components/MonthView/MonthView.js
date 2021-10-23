@@ -1,7 +1,7 @@
 import React from 'react'
-import CalendarHeader from './CalendarHeader'
+import CalendarHeader from '../CalendarHeader'
 import CalendarMonths from './CalendarMonths'
-import {  SELECT_YEAR, DATE_VIEW } from '../constant'
+import {  SELECT_YEAR, DATE_VIEW } from '../../constant'
 
 const MonthView = ({ calendarStore, setView }) => {
   const {
