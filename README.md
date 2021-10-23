@@ -14,7 +14,7 @@ yarn build
 ```
 
 # How to select date?
-there's two ways for select date
+there're two ways for selecting a date
 1. Edit input field and press "Enter" to confirm
 2. Select date in Calendar
 
