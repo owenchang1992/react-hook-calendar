@@ -110,6 +110,10 @@
   border: 2px solid rgb(0, 162, 255);
 }
 
+.date-picker-icon{
+  fill:#ddd
+}
+
 .date-picker-title:hover .date-picker-icon{
   fill:rgb(0, 162, 255);
 }
