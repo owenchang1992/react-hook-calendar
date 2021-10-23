@@ -3,7 +3,7 @@ import '../styles/Calendar.css'
 
 import { monthTitles } from '../constant'
 
-const CalendarMonths = ({ month, onClick }) => {
+const CalendarMonths = ({ month, onMonthSelected }) => {
   const getClass = (index) => {
     return month === index ? 'selected-item' : ''
   }
@@ -14,7 +14,7 @@ const CalendarMonths = ({ month, onClick }) => {
         monthTitles.map((title, index) => <div
           key={title}
           className={`month-item ${getClass(index)}`}
-          onClick={() => onClick(index)}
+          onClick={() => onMonthSelected(index)}
         >{title}</div>)
       }
     </div>

@@ -3,7 +3,7 @@ import '../styles/Calendar.css'
 import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../constant'
 import { findTag } from '../utils'
 
-const CalendarDays = ({ days, selectDay }) => {
+const CalendarDays = ({ days, onDateSelected }) => {
   if (!days) return null;
 
   const getClass = (day) => {
@@ -19,7 +19,7 @@ const CalendarDays = ({ days, selectDay }) => {
           <div
             key={`${day.tags[0]} ${day.title}`}
             className={`item ${getClass(day)}`}
-            onClick={() => selectDay(day)}
+            onClick={() => onDateSelected(day)}
           >
             {day.title}
           </div>

@@ -48,7 +48,7 @@ const Calendar = () => {
             <WeekTitles />
             <CalendarDays
               days={days}
-              selectDay={(day) => {
+              onDateSelected={(day) => {
                 setView(null)
                 selectDay(day)
               }}
@@ -66,7 +66,7 @@ const Calendar = () => {
             />
             <CalendarMonths
               month={month}
-              onClick={(month) => {
+              onMonthSelected={(month) => {
                 setView(DATE_VIEW)
                 selectMonth(month)
               }}
@@ -85,7 +85,7 @@ const Calendar = () => {
             <CalendarYears
               year={year}
               decadeCounter={decadeCounter}
-              onClick={(year) => {
+              onYearSelected={(year) => {
                 setView(SELECT_MONTH)
                 selectYear(year)
               }}
@@ -101,7 +101,7 @@ const Calendar = () => {
     <div className="calendar-container">
       <DatePicker
         selectedDay={selectedDay}
-        setSelectedDay={setSelectedDay}
+        onDateComfirm={setSelectedDay}
         onInputClick={() => setView(DATE_VIEW)}
       />
       { getView(view) }

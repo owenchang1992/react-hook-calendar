@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Icon from './Icon'
 import { date2ISOString } from '../utils'
 
-const DatePicker = ({ selectedDay, onInputClick, setSelectedDay }) => {
+const DatePicker = ({ selectedDay, onInputClick, onDateComfirm }) => {
   const [inputString, setInputString] = useState(date2ISOString(selectedDay))
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const DatePicker = ({ selectedDay, onInputClick, setSelectedDay }) => {
         const newDate = new Date(year, month - 1, day)
 
         if (isValidDate(newDate)) {
-          setSelectedDay(newDate)
+          onDateComfirm(newDate)
         }
       }
     }

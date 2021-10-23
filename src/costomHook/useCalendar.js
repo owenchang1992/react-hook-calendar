@@ -5,7 +5,7 @@ import { findTag } from '../utils'
 const useCalendar = () => {
   const [month, setMonth] = useState(new Date().getMonth())
   const [year, setYear] = useState(new Date().getFullYear())
-  const [days, setDays] = useState(null)
+  const [days, setDays] = useState([])
   const [selectedDay, setSelectedDay] = useState(new Date())
   const [decadeCounter, setDecadeCounter] = useState(0)
 
