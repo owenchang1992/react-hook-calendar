@@ -50,14 +50,9 @@ const useCalendar = () => {
   const decadeBackward = () => setDecadeCounter(decadeCounter - 1)
 
   const selectDay = (day) => {
-    const updateSelectedDay = (day) => {
-      // create new date object
-      if (findTag(day, CURRENT_MONTH)) {
-        setSelectedDate(new Date(year, month, day.title))
-      }
+    if (findTag(day, CURRENT_MONTH)) {
+      setSelectedDate(new Date(year, month, day.title))
     }
-
-    updateSelectedDay(day)
   }
 
   const selectMonth = (month) => setMonth(month)
