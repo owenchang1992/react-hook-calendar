@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Icon from './Icon'
+import { DATE_VIEW } from '../constant'
 import { date2ISOString } from '../utils'
 
-const DatePicker = ({ selectedDate, onInputClick, onDateComfirm }) => {
-  const [inputString, setInputString] = useState(date2ISOString(selectedDate))
+const DatePicker = ({ calendarStore, setView }) => {
+  const { selectedDate, setSelectedDate } = calendarStore
+  const getTitle = (date) => date2ISOString(date).substring(0, 10)
+
+  const [inputString, setInputString] = useState(getTitle(selectedDate))
 
   useEffect(() => {
     const input = document.getElementById('dateInput')
@@ -18,7 +22,8 @@ const DatePicker = ({ selectedDate, onInputClick, onDateComfirm }) => {
         const newDate = new Date(year, month - 1, day)
 
         if (isValidDate(newDate)) {
-          onDateComfirm(newDate)
+            setView(null)
+            setSelectedDate(newDate)
         }
       }
     }
@@ -29,13 +34,13 @@ const DatePicker = ({ selectedDate, onInputClick, onDateComfirm }) => {
   }, [inputString])
 
   useEffect(() => {
-    setInputString(date2ISOString(selectedDate))
+    setInputString(getTitle(selectedDate))
   }, [selectedDate])
 
   return (
     <div 
       className="date-picker-title"
-      onClick={onInputClick}
+      onClick={() => setView(DATE_VIEW)}
     >
       <Icon
         path={ 
