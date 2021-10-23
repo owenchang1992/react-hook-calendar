@@ -21,11 +21,17 @@ there's two ways for select date
 
 # API Properties of Components
 
+## DateView, MonthView, YearView, DatePicker
+Name | Type | Default | Description
+-----| ---- | ---- | -----
+calendarStore| Object | | date data store
+setView | function | | called when view is updated
+
 ## CalendarHeader
 Name | Type | Default | Description
 -----| ---- | ---- | -----
 title| string | '' | title for a view
-onTitleClick | function |  | called when Title is clicked
+onTitleClick | function |  | called when title is clicked
 onBackClick | function |  | called when back arrow is clicked
 onForwardClick | function |  | called when forward arrow is clicked
 
