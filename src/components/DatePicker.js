@@ -3,12 +3,9 @@ import Icon from './Icon'
 import { date2ISOString } from '../utils'
 
 const DatePicker = ({ selectedDay, onIconClick, setSelectedDay }) => {
-  const title = date2ISOString(selectedDay)
-  const [editMode, setEditMode] = useState(false)
-  const [inputString, setInputString] = useState(title)
+  const [inputString, setInputString] = useState(date2ISOString(selectedDay))
 
   useEffect(() => {
-    if (!editMode) return 
     const input = document.getElementById('dateInput')
     const checkDate = (e) => {
       if (e.code === 'Enter') {
@@ -23,15 +20,17 @@ const DatePicker = ({ selectedDay, onIconClick, setSelectedDay }) => {
         if (isValidDate(newDate)) {
           setSelectedDay(newDate)
         }
-
-        setEditMode(false)
       }
     }
 
     input.addEventListener('keyup', checkDate)
 
     return () => input.removeEventListener('keyup', checkDate)
-  }, [editMode, inputString])
+  }, [inputString])
+
+  useEffect(() => {
+    setInputString(date2ISOString(selectedDay))
+  }, [selectedDay])
 
   return (
     <div className="date-picker-title">
@@ -44,26 +43,13 @@ const DatePicker = ({ selectedDay, onIconClick, setSelectedDay }) => {
         }
         onClick={onIconClick}
       />
-      {
-        editMode ? (
-          <input
-            id="dateInput"
-            className="input"
-            type="text"
-            value={inputString}
-            onChange={(e) => setInputString(e.target.value)}
-          />
-        ) : (
-          <div
-            className="input"
-            onClick={() => {
-              setInputString(title)
-              setEditMode(true)
-            }}>
-            {title}
-          </div>
-        )
-      }
+      <input
+        id="dateInput"
+        className="input"
+        type="text"
+        value={inputString}
+        onChange={(e) => setInputString(e.target.value)}
+      />
     </div>
   )
 }
