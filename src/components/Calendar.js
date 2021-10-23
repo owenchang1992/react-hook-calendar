@@ -102,7 +102,7 @@ const Calendar = () => {
       <DatePicker
         selectedDay={selectedDay}
         setSelectedDay={setSelectedDay}
-        onIconClick={() => setView(DATE_VIEW)}
+        onInputClick={() => setView(DATE_VIEW)}
       />
       { getView(view) }
     </div>
