@@ -18,8 +18,14 @@ const YearView = ({ calendarStore, setView }) => {
 
   const getDecadeTitle = (year, decadeCounter) => {
     const focusYear = year + decadeCounter * 10
-    let firstYear = focusYear.toString().substring(0, 3) + 0
-    let lastYear = focusYear.toString().substring(0, 3) + 9
+
+    const getYear = (year) => {
+      let yearString = year.toString()
+      return yearString.substring(0, yearString.length - 1)
+    }
+
+    let firstYear = getYear(focusYear) + 0
+    let lastYear = getYear(focusYear) + 9
 
     return `${firstYear}-${lastYear}`
   }
