@@ -10,6 +10,7 @@ const CalendarDays = ({ days, onDateSelected }) => {
     if (findTag(day, SELECTEDDAY)) return 'selected-item'
     if (findTag(day, TODAY)) return 'today'
     if (!findTag(day, CURRENT_MONTH)) return 'not-current-target'
+    return ''
   }
 
   return (
