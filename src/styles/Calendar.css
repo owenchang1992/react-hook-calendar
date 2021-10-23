@@ -102,12 +102,12 @@
   cursor: pointer;
 }
 
-.date-picker-icon:hover {
-  fill:rgb(0, 162, 255)
-}
-
 .date-picker-title:hover {
   border: 2px solid rgb(0, 162, 255);
+}
+
+.date-picker-title:hover .date-picker-icon{
+  fill:rgb(0, 162, 255);
 }
 
 .input {
