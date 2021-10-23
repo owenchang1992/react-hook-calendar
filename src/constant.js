@@ -7,8 +7,8 @@ export const TODAY = 'TODAY'
 
 // View Status
 export const DATE_VIEW = 'DATE_VIEW'
-export const SELECT_MONTH = 'SELECT_MONTH'
-export const SELECT_YEAR = 'SELECT_YEAR'
+export const MONTH_VIEW = 'MONTH_VIEW'
+export const YEAR_VIEW = 'YEAR_VIEW'
 
 // Months Title
 export const monthTitles = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Calendar.css'
+import '../../styles/Calendar.css'
 
 const CalendarYears = ({ year, decadeCounter, onYearSelected }) => {
   const getClass = (title, index) => {

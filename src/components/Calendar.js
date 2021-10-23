@@ -7,12 +7,12 @@ import DateView from './DateView/DateView'
 import MonthView from './MonthView/MonthView'
 import YearView from './YearView/YearView'
 
-import { DATE_VIEW, SELECT_MONTH, SELECT_YEAR } from '../constant'
+import { DATE_VIEW, MONTH_VIEW, YEAR_VIEW } from '../constant'
 
 import '../styles/Calendar.css'
 
 const Calendar = () => {
-  const calendarStore = useCalendar();
+  const calendarStore = useCalendar()
 
   const [view, setView] = useState(null)
 
@@ -20,9 +20,9 @@ const Calendar = () => {
     switch (view) {
       case DATE_VIEW:
         return <DateView calendarStore={calendarStore} setView={setView}/>
-      case SELECT_MONTH: 
+      case MONTH_VIEW: 
         return <MonthView calendarStore={calendarStore} setView={setView}/>
-      case SELECT_YEAR: 
+      case YEAR_VIEW: 
         return <YearView calendarStore={calendarStore} setView={setView}/>
       default:
         return null
@@ -30,7 +30,7 @@ const Calendar = () => {
   }
 
   return (
-    <div className="acontainer">
+    <div className="normal-container">
       <DatePicker calendarStore={calendarStore} setView={setView}/>
       { getView(view) }
     </div>

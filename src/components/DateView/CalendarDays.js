@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Calendar.css'
+import '../../styles/Calendar.css'
 import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../../constant'
 import { findTag } from '../../utils'
 
@@ -29,4 +29,4 @@ const CalendarDays = ({ days, onDateSelected }) => {
   )
 }
 
-export default CalendarDays;
+export default CalendarDays

@@ -2,7 +2,8 @@ import React from 'react'
 import CalendarHeader from '../CalendarHeader'
 import WeekTitles from './WeekTitles'
 import CalendarDays from './CalendarDays'
-import { SELECT_MONTH, monthTitles } from '../../constant'
+import { MONTH_VIEW, monthTitles } from '../../constant'
+import '../../styles/Calendar.css'
 
 const DateView = ({ calendarStore, setView }) => {
   const {
@@ -19,10 +20,10 @@ const DateView = ({ calendarStore, setView }) => {
   }
 
   return (
-    <div className="acontainer calendar-container">
+    <div className="normal-container calendar-container">
       <CalendarHeader
         title={getDateViewTitle(year, month)}
-        onTitleClick={() => setView(SELECT_MONTH)}
+        onTitleClick={() => setView(MONTH_VIEW)}
         onBackClick={monthBackward}
         onForwardClick={monthForward}
       />

@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/Layout.css';
+import React from 'react'
+import '../styles/Layout.css'
 
 const Layout = ({ children }) => (
   <div className="container">
@@ -7,4 +7,4 @@ const Layout = ({ children }) => (
   </div>
 )
 
-export default Layout;
+export default Layout

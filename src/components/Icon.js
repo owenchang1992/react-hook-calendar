@@ -11,4 +11,4 @@ const Icon = ({path, onClick}) => (
   </svg>
 )
 
-export default Icon;
+export default Icon

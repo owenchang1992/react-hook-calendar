@@ -3,7 +3,9 @@ import React from 'react'
 import CalendarHeader from '../CalendarHeader'
 import CalendarYears from './CalendarYears'
 
-import { SELECT_MONTH, DATE_VIEW } from '../../constant'
+import { MONTH_VIEW, DATE_VIEW } from '../../constant'
+
+import '../../styles/Calendar.css'
 
 const YearView = ({ calendarStore, setView }) => {
   const {
@@ -23,7 +25,7 @@ const YearView = ({ calendarStore, setView }) => {
   }
 
   return  (
-    <div className="acontainer calendar-container">
+    <div className="normal-container calendar-container">
       <CalendarHeader
         title={`${getDecadeTitle(year, decadeCounter)}`}
         onTitleClick={() => setView(DATE_VIEW)}
@@ -34,7 +36,7 @@ const YearView = ({ calendarStore, setView }) => {
         year={year}
         decadeCounter={decadeCounter}
         onYearSelected={(year) => {
-          setView(SELECT_MONTH)
+          setView(MONTH_VIEW)
           selectYear(year)
         }}
       />
