@@ -1,10 +1,14 @@
-.calendar-container {
-  padding: 5px;
+.acontainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 300px
+  width: 300px;
+}
+
+.calendar-container {
+  padding: 10px 5px;
+  border: 1px solid #ddd
 }
 
 .header {
@@ -26,7 +30,7 @@
 
 .weeks {
   font-weight: 700;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .item {

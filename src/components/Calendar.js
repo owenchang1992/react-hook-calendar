@@ -38,7 +38,7 @@ const Calendar = () => {
     switch (view) {
       case DATE_VIEW:
         return (
-          <>
+          <div className="acontainer calendar-container">
             <CalendarHeader
               title={getDateViewTitle(year, month)}
               onTitleClick={() => setView(SELECT_MONTH)}
@@ -53,11 +53,11 @@ const Calendar = () => {
                 selectDay(day)
               }}
             />
-          </>
+          </div>
         )
       case SELECT_MONTH: 
         return (
-          <>
+          <div className="acontainer calendar-container">
             <CalendarHeader
               title={year}
               onTitleClick={() => setView(SELECT_YEAR)}
@@ -71,11 +71,11 @@ const Calendar = () => {
                 selectMonth(month)
               }}
             />
-          </>
+          </div>
         )
       case SELECT_YEAR: 
         return (
-          <>
+          <div className="acontainer calendar-container">
             <CalendarHeader
               title={`${getDecadeTitle(year, decadeCounter)}`}
               onTitleClick={() => setView(DATE_VIEW)}
@@ -90,7 +90,7 @@ const Calendar = () => {
                 selectYear(year)
               }}
             />
-          </>
+          </div>
         )
       default:
         return null
@@ -98,10 +98,13 @@ const Calendar = () => {
   }
 
   return (
-    <div className="calendar-container">
+    <div className="acontainer">
       <DatePicker
         selectedDay={selectedDay}
-        onDateComfirm={setSelectedDay}
+        onDateComfirm={(date) => {
+          setView(null)
+          setSelectedDay(date)}
+        }
         onInputClick={() => setView(DATE_VIEW)}
       />
       { getView(view) }
