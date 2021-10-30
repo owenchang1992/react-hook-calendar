@@ -1,10 +1,10 @@
 import React from 'react'
-import '../../styles/Calendar.css'
+import style from '../../styles/Calendar.css'
 
 const CalendarYears = ({ year, decadeCounter, onYearSelected }) => {
   const getClass = (title, index) => {
-    if (index === 0 || index === 11) return 'not-current-target'
-    return year === title ? 'selected-item' : ''
+    if (index === 0 || index === 11) return style.notCurrentTarget
+    return year === title ? style.selectedItem : ''
   }
 
   const getList = (year) => {
@@ -22,11 +22,11 @@ const CalendarYears = ({ year, decadeCounter, onYearSelected }) => {
   }
 
   return (
-    <div className="row">
+    <div className={style.row}>
       {
         getList(year).map((title, index) => <div
           key={title}
-          className={`month-item ${getClass(title, index)}`}
+          className={`${style.monthItem} ${getClass(title, index)}`}
           onClick={() => onYearSelected(title)}
         >{title}</div>)
       }

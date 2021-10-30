@@ -5,7 +5,7 @@ import CalendarYears from './CalendarYears'
 
 import { MONTH_VIEW, DATE_VIEW } from '../../constant'
 
-import '../../styles/Calendar.css'
+import style from '../../styles/Calendar.css'
 
 const YearView = ({ calendarStore, setView }) => {
   const {
@@ -31,7 +31,7 @@ const YearView = ({ calendarStore, setView }) => {
   }
 
   return  (
-    <div className="normal-container calendar-container">
+    <div className={`${style.normalContainer} ${style.calendarContainer}`}>
       <CalendarHeader
         title={`${getDecadeTitle(year, decadeCounter)}`}
         onTitleClick={() => setView(DATE_VIEW)}

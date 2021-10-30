@@ -15,8 +15,10 @@ module.exports = (env={}, argv={}) => ({
             ? MiniCssExtractPlugin.loader
             : "style-loader",
           {
-            loader: "css-loader", options: {
-              sourceMap: true
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: true
             }
           }
         ]

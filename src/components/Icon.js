@@ -1,9 +1,9 @@
 import React from 'react'
-import '../styles/Calendar.css'
+import style from '../styles/Calendar.css'
 
 const Icon = ({path, onClick}) => (
   <svg 
-    className="icon"
+    className={style.icon}
     viewBox="0 0 24 24"
     onClick={onClick}
   >

@@ -9,7 +9,7 @@ import YearView from './YearView/YearView'
 
 import { DATE_VIEW, MONTH_VIEW, YEAR_VIEW } from '../constant'
 
-import '../styles/Calendar.css'
+import style from '../styles/Calendar.css'
 
 const Calendar = () => {
   const calendarStore = useCalendar()
@@ -30,7 +30,7 @@ const Calendar = () => {
   }
 
   return (
-    <div className="normal-container">
+    <div className={style.normalContainer}>
       <DatePicker calendarStore={calendarStore} setView={setView}/>
       { getView(view) }
     </div>

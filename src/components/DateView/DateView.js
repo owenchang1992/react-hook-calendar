@@ -3,7 +3,7 @@ import CalendarHeader from '../CalendarHeader'
 import WeekTitles from './WeekTitles'
 import CalendarDays from './CalendarDays'
 import { MONTH_VIEW, monthTitles } from '../../constant'
-import '../../styles/Calendar.css'
+import style from '../../styles/Calendar.css'
 
 const DateView = ({ calendarStore, setView }) => {
   const {
@@ -20,7 +20,7 @@ const DateView = ({ calendarStore, setView }) => {
   }
 
   return (
-    <div className="normal-container calendar-container">
+    <div className={`${style.normalContainer} ${style.calendarContainer}`}>
       <CalendarHeader
         title={getDateViewTitle(year, month)}
         onTitleClick={() => setView(MONTH_VIEW)}

@@ -1,4 +1,4 @@
-.normal-container {
+.normalContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -6,7 +6,7 @@
   width: 300px;
 }
 
-.calendar-container {
+.calendarContainer {
   padding: 10px 5px;
   border: 1px solid #ddd
 }
@@ -46,11 +46,11 @@
   cursor: pointer;
 }
 
-.week-item {
+.weekItem {
   cursor: auto;
 }
 
-.selected-item {
+.selectedItem {
   background-color: #db3d44;
   color: white;
 }
@@ -61,18 +61,18 @@
   cursor: pointer;
 }
 
-.header-title {
+.headerTitle {
   padding: 0.3rem 2.5rem;
   border-radius: 5px;
   font-weight: 700;
   cursor: pointer;
 }
 
-.header-title:hover {
+.headerTitle:hover {
   background-color: #ddd;
 }
 
-.not-current-target {
+.notCurrentTarget {
   color: #eeeeee
 }
 
@@ -80,7 +80,7 @@
   color: #db3d44;
 }
 
-.month-item {
+.monthItem {
   width: 52px;
   height: 52px;
   display: flex;
@@ -93,7 +93,7 @@
   cursor: pointer;
 }
 
-.date-picker-title {
+.datePickerTitle {
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -106,15 +106,15 @@
   cursor: pointer;
 }
 
-.date-picker-title:hover {
+.datePickerTitle:hover {
   border: 2px solid rgb(0, 162, 255);
 }
 
-.date-picker-icon{
+.datePickerIcon{
   fill:#ddd
 }
 
-.date-picker-title:hover .date-picker-icon{
+.datePickerTitle:hover .datePickerIcon{
   fill:rgb(0, 162, 255);
 }
 

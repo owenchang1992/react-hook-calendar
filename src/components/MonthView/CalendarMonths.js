@@ -1,19 +1,19 @@
 import React from 'react'
-import '../../styles/Calendar.css'
+import style from '../../styles/Calendar.css'
 
 import { monthTitles } from '../../constant'
 
 const CalendarMonths = ({ month, onMonthSelected }) => {
   const getClass = (index) => {
-    return month === index ? 'selected-item' : ''
+    return month === index ? style.selectedItem : ''
   }
 
   return (
-    <div className="row">
+    <div className={style.row}>
       {
         monthTitles.map((title, index) => <div
           key={title}
-          className={`month-item ${getClass(index)}`}
+          className={`${style.monthItem} ${getClass(index)}`}
           onClick={() => onMonthSelected(index)}
         >{title}</div>)
       }

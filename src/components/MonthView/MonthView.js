@@ -1,8 +1,8 @@
 import React from 'react'
 import CalendarHeader from '../CalendarHeader'
 import CalendarMonths from './CalendarMonths'
-import {  YEAR_VIEW, DATE_VIEW } from '../../constant'
-import '../../styles/Calendar.css'
+import { YEAR_VIEW, DATE_VIEW } from '../../constant'
+import style from '../../styles/Calendar.css'
 
 const MonthView = ({ calendarStore, setView }) => {
   const {
@@ -14,7 +14,7 @@ const MonthView = ({ calendarStore, setView }) => {
   } = calendarStore
 
   return (
-    <div className="normal-container calendar-container">
+    <div className={`${style.normalContainer} ${style.calendarContainer}`}>
       <CalendarHeader
         title={year}
         onTitleClick={() => setView(YEAR_VIEW)}

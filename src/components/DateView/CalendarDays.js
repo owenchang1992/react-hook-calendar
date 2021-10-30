@@ -1,25 +1,27 @@
 import React from 'react'
-import '../../styles/Calendar.css'
+import style from '../../styles/Calendar.css'
 import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../../constant'
 import { findTag } from '../../utils'
+
+console.log(style);
 
 const CalendarDays = ({ days, onDateSelected }) => {
   if (!days) return null;
 
   const getClass = (day) => {
-    if (findTag(day, SELECTEDDAY)) return 'selected-item'
-    if (findTag(day, TODAY)) return 'today'
-    if (!findTag(day, CURRENT_MONTH)) return 'not-current-target'
+    if (findTag(day, SELECTEDDAY)) return style.selectedItem
+    if (findTag(day, TODAY)) return style.today
+    if (!findTag(day, CURRENT_MONTH)) return style.notCurrentTarget
     return ''
   }
 
   return (
-    <div className="row">
+    <div className={style.row}>
       {
         days.map((day) => (
           <div
             key={`${day.tags[0]} ${day.title}`}
-            className={`item ${getClass(day)}`}
+            className={`${style.item} ${getClass(day)}`}
             onClick={() => onDateSelected(day)}
           >
             {day.title}

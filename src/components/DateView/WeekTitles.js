@@ -1,11 +1,11 @@
 import React from 'react'
-import '../../styles/Calendar.css'
+import style from '../../styles/Calendar.css'
 
 const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 const WeekTitles = () => (
-  <div className="weeks row">
-    {weeks.map((title) => <div key={title} className="item week-item">{title}</div>)}
+  <div className={`${style.weeks} ${style.row}`}>
+    {weeks.map((title) => <div key={title} className={`${style.item} ${style.weekItem}`}>{title}</div>)}
   </div>
 )
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import '../styles/Layout.css'
+import style from '../styles/Layout.css'
 
 const Layout = ({ children }) => (
-  <div className="container">
+  <div className={style.container}>
     {children}
   </div>
 )
