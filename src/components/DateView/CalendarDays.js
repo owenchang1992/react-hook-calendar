@@ -3,8 +3,6 @@ import style from '../../styles/Calendar.css'
 import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../../constant'
 import { findTag } from '../../utils'
 
-console.log(style);
-
 const CalendarDays = ({ days, onDateSelected }) => {
   if (!days) return null;
 

@@ -1,76 +1,103 @@
-import { useState, useEffect } from 'react'
-import { PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH, SELECTEDDAY, TODAY } from '../constant'
-import { findTag } from '../utils'
+import { useReducer, useEffect, useState } from 'react'
+import calendarReducer from './calendarReducer'
 
-/**
- * For controling the data of calendar
- * month: current month
- * year: current year
- * days: list of day { title: DAY_TITLE, tags: [DAY_TAGS]}
- * selectedDate: select date
- * decadeCounter: page offset for years view
- * @returns 
- */
+import {
+  MONTH_FORWARD,
+  MONTH_BACKWARD,
+  YEAR_FORWARD,
+  YEAR_BACKWARD,
+  DECADE_FORWARD,
+  DECADE_BACKWARD,
+  SELECT_DAY,
+  SELECT_DATE,
+  SELECT_MONTH,
+  SELECT_YEAR,
+  PREVIOUS_MONTH,
+  NEXT_MONTH,
+  CURRENT_MONTH,
+  SELECTEDDAY,
+  TODAY,
+} from '../constant'
+
+const INITIAL_DATE = {
+  displayDate: {
+    year: new Date().getFullYear(),
+    month: new Date().getMonth(),
+    decadeCounter: 0
+  },
+  selectedDate: new Date(),
+}
 
 const useCalendar = () => {
-  const [month, setMonth] = useState(new Date().getMonth())
-  const [year, setYear] = useState(new Date().getFullYear())
+  const [calendar, dispatchCalendar] = useReducer(calendarReducer, INITIAL_DATE)
   const [days, setDays] = useState([])
-  const [selectedDate, setSelectedDate] = useState(new Date())
-  const [decadeCounter, setDecadeCounter] = useState(0)
 
   const monthForward = () => {
-    if (month === 11) {
-      setMonth(0)
-      setYear(year + 1)
-
-      return
-    }
-
-    setMonth(month + 1)
+    dispatchCalendar({
+      type: MONTH_FORWARD
+    })
   }
 
   const monthBackward = () => {
-    if (month === 0) {
-      setMonth(11)
-      setYear(year - 1)
-
-      return
-    }
-
-    setMonth(month - 1)
+    dispatchCalendar({
+      type: MONTH_BACKWARD
+    })
   }
 
-  const yearForward = () => setYear(year + 1)
+  const yearForward = () => {
+    dispatchCalendar({
+      type: YEAR_FORWARD
+    })
+  }
+  
+  const yearBackward = () => {
+    dispatchCalendar({
+      type: YEAR_BACKWARD
+    })
+  }
 
-  const yearBackward = () => setYear(year - 1)
+  const decadeForward = () => {
+    dispatchCalendar({
+      type: DECADE_FORWARD
+    })
+  }
 
-  const decadeForward = () => setDecadeCounter(decadeCounter + 1)
-
-  const decadeBackward = () => setDecadeCounter(decadeCounter - 1)
+  const decadeBackward = () => {
+    dispatchCalendar({
+      type: DECADE_BACKWARD
+    })
+  }
 
   const selectDay = (day) => {
-    let selectedMonth = month
-
-    if (findTag(day, PREVIOUS_MONTH)) selectedMonth = month - 1
-    else if (findTag(day, NEXT_MONTH)) selectedMonth = month + 1
-    setSelectedDate(new Date(year, selectedMonth, day.title))
+    dispatchCalendar({
+      type: SELECT_DAY,
+      payload: day
+    })
   }
 
   const selectDate = (date) => {
-    setMonth(date.getMonth())
-    setYear(date.getFullYear())
-    setSelectedDate(date)
+    dispatchCalendar({
+      type: SELECT_DATE,
+      payload: date
+    })
   }
 
-  const selectMonth = (month) => setMonth(month)
+  const selectMonth = (month) => {
+    dispatchCalendar({
+      type: SELECT_MONTH,
+      payload: month
+    })
+  }
 
   const selectYear = (year) => {
-    setDecadeCounter(0)
-    setYear(year)
+    dispatchCalendar({
+      type: SELECT_YEAR,
+      payload: year
+    })
   }
 
-  const getDays = () => {
+  const getDays = (calendar) => {
+    const { year, month} = calendar?.displayDate
     // calculate days in current mouth
     const daysInMonth = 32 - new Date(year, month, 32).getDate()
 
@@ -87,22 +114,25 @@ const useCalendar = () => {
     // Add Selected tag for selected day
     const addSelectedTag = (tags, options) => {
       if (
-        selectedDate
+        calendar.selectedDate
         && options.monthState === CURRENT_MONTH
-        && options.date.getTime() === new Date(selectedDate.getTime()).setHours(0, 0, 0, 0)
+        && options.date.getTime() === new Date(calendar.selectedDate.getTime()).setHours(0, 0, 0, 0)
       ) return [...tags, SELECTEDDAY]
       return tags
     }
 
     // Add tag PREVIOUS_MONTH, NEXT_MONTH, CURRENT_MONTH
     const addMonthTag = (tags, options) => {
-      if (options && options.monthState) return [...tags, options.monthState]
+      if (options?.monthState) return [...tags, options.monthState]
       return tags
     }
 
     // Add Today tag
     const addCurrentDayTag = (tags, options) => {
-      if (options.date.getTime() === new Date().setHours(0, 0, 0, 0)) return [...tags, TODAY]
+      if (
+        options.date.getTime() === new Date().setHours(0, 0, 0, 0)
+        && options.monthState === CURRENT_MONTH
+      ) return [...tags, TODAY]
       return tags
     }
 
@@ -145,26 +175,26 @@ const useCalendar = () => {
   }
 
   useEffect(() => {
-    getDays()
-  }, [year, month, selectedDate])
+    getDays(calendar)
+  }, [calendar])
 
   return {
     days,
-    selectedDate,
+    selectedDate: calendar.selectedDate,
     selectDate,
     selectDay,
-    year,
+    year: calendar.displayDate.year,
     yearForward,
     yearBackward,
     selectYear,
-    month,
+    month: calendar.displayDate.month,
     monthForward,
     monthBackward,
     selectMonth,
-    decadeCounter,
+    decadeCounter: calendar.displayDate.decadeCounter,
     decadeForward,
     decadeBackward,
   }
 }
 
-export default useCalendar;
+export default useCalendar
