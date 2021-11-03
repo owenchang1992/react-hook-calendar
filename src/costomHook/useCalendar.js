@@ -32,100 +32,6 @@ const useCalendar = () => {
   const [calendar, dispatchCalendar] = useReducer(calendarReducer, INITIAL_DATE)
   const [days, setDays] = useState([])
 
-  const monthForward = useCallback(
-    () => {
-      dispatchCalendar({
-        type: MONTH_FORWARD
-      })
-    }
-    ,[]
-  )
-
-  const monthBackward = useCallback(
-    () => {
-      dispatchCalendar({
-        type: MONTH_BACKWARD
-      })
-    }
-    ,[]
-  )
-
-  const yearForward = useCallback(
-    () => {
-      dispatchCalendar({
-        type: YEAR_FORWARD
-      })
-    }
-    ,[]
-  )
-  
-  const yearBackward = useCallback(
-    () => {
-      dispatchCalendar({
-        type: YEAR_BACKWARD
-      })
-    }
-    ,[]
-  )
-
-  const decadeForward = useCallback(
-    () => {
-      dispatchCalendar({
-        type: DECADE_FORWARD
-      })
-    }
-    ,[]
-  )
-
-  const decadeBackward = useCallback(
-    () => {
-      dispatchCalendar({
-        type: DECADE_BACKWARD
-      })
-    }
-    ,[]
-  )
-
-  const selectDay = useCallback(
-    (day) => {
-      dispatchCalendar({
-        type: SELECT_DAY,
-        payload: day
-      })
-    }
-    ,[]
-  )
-
-  const selectDate = useCallback(
-    (date) => {
-      dispatchCalendar({
-        type: SELECT_DATE,
-        payload: date
-      })
-    }
-    , []
-  )
-
-  const selectMonth = useCallback(
-    (month) => {
-      dispatchCalendar({
-        type: SELECT_MONTH,
-        payload: month
-      })
-    }
-    , []
-  )
-
-  const selectYear = (month) => {
-    (year) => {
-      dispatchCalendar({
-        type: SELECT_YEAR,
-        payload: year
-      })
-    }
-    , []
-  }
-
   const getDays = (calendar) => {
     const { year, month} = calendar?.displayDate
     // calculate days in current mouth
@@ -211,19 +117,10 @@ const useCalendar = () => {
   return {
     days,
     selectedDate: calendar.selectedDate,
-    selectDate,
-    selectDay,
     year: calendar.displayDate.year,
-    yearForward,
-    yearBackward,
-    selectYear,
     month: calendar.displayDate.month,
-    monthForward,
-    monthBackward,
-    selectMonth,
     decadeCounter: calendar.displayDate.decadeCounter,
-    decadeForward,
-    decadeBackward,
+    dispatchCalendar,
   }
 }
 

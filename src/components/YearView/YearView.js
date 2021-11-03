@@ -3,17 +3,20 @@ import React from 'react'
 import CalendarHeader from '../CalendarHeader'
 import CalendarYears from './CalendarYears'
 
-import { MONTH_VIEW, DATE_VIEW } from '../../constant'
+import {
+  MONTH_VIEW,
+  DATE_VIEW,
+  SELECT_YEAR,
+  DECADE_FORWARD,
+  DECADE_BACKWARD,
+} from '../../constant'
 
 import style from '../../styles/Calendar.css'
 
-const YearView = ({ variable, setView }) => {
+const YearView = ({ variable, setView, dispatchCalendar }) => {
   const {
     year,
-    selectYear,
     decadeCounter,
-    decadeBackward,
-    decadeForward
   } = variable
 
   const getDecadeTitle = (year, decadeCounter) => {
@@ -28,6 +31,26 @@ const YearView = ({ variable, setView }) => {
     let lastYear = getYear(focusYear) + 9
 
     return `${firstYear}-${lastYear}`
+  }
+
+  const selectYear = (year) => {
+    dispatchCalendar({
+      type: SELECT_YEAR,
+      payload: year
+    })
+  }
+
+  const decadeForward = () => {
+    dispatchCalendar({
+      type: DECADE_FORWARD
+    })
+  }
+
+
+  const decadeBackward = () => {
+    dispatchCalendar({
+      type: DECADE_BACKWARD
+    })
   }
 
   return  (

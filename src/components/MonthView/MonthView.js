@@ -1,17 +1,35 @@
 import React from 'react'
 import CalendarHeader from '../CalendarHeader'
 import CalendarMonths from './CalendarMonths'
-import { YEAR_VIEW, DATE_VIEW } from '../../constant'
+import {
+  YEAR_VIEW,
+  DATE_VIEW,
+  YEAR_FORWARD,
+  YEAR_BACKWARD,
+  SELECT_MONTH,
+} from '../../constant'
 import style from '../../styles/Calendar.css'
 
-const MonthView = ({ variable, setView }) => {
+const MonthView = ({ variable, setView, dispatchCalendar }) => {
   const {
     year,
-    yearBackward,
-    yearForward,
     month,
-    selectMonth,
   } = variable
+
+  const yearBackward = () => {
+    dispatchCalendar({ type: YEAR_BACKWARD })
+  }
+
+  const yearForward = () => {
+    dispatchCalendar({ type: YEAR_FORWARD })
+  }
+
+  const selectMonth = (month) => {
+    dispatchCalendar({
+      type: SELECT_MONTH,
+      payload: month
+    })
+  }
 
   return (
     <div className={`${style.normalContainer} ${style.calendarContainer}`}>

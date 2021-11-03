@@ -15,19 +15,10 @@ const Calendar = () => {
   const {
     days,
     selectedDate,
-    selectDate,
-    selectDay,
     year,
-    yearForward,
-    yearBackward,
-    selectYear,
     month,
-    monthForward,
-    monthBackward,
-    selectMonth,
     decadeCounter,
-    decadeForward,
-    decadeBackward,
+    dispatchCalendar,
   } = useCalendar()
 
   const [view, setView] = useState(null)
@@ -38,13 +29,11 @@ const Calendar = () => {
         return (
           <DateView
             variable={{
-              monthBackward,
-              monthForward,
-              selectDay,
               days,
               year,
               month,
             }}
+            dispatchCalendar={dispatchCalendar}
             setView={setView}
           />
         )
@@ -53,11 +42,9 @@ const Calendar = () => {
           <MonthView 
             variable={{
               year,
-              yearBackward,
-              yearForward,
               month,
-              selectMonth,
             }}
+            dispatchCalendar={dispatchCalendar}
             setView={setView}
           />
         )
@@ -66,11 +53,9 @@ const Calendar = () => {
           <YearView
             variable={{
               year,
-              selectYear,
               decadeCounter,
-              decadeBackward,
-              decadeForward
             }}
+            dispatchCalendar={dispatchCalendar}
             setView={setView}
           />
         )
@@ -83,8 +68,8 @@ const Calendar = () => {
     <div className={style.normalContainer}>
       <DatePicker
         selectedDate={selectedDate}
-        selectDate={selectDate}
         setView={setView}
+        dispatchCalendar={dispatchCalendar}
       />
       { getView(view) }
     </div>
