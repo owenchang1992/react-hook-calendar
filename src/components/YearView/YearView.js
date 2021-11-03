@@ -7,14 +7,14 @@ import { MONTH_VIEW, DATE_VIEW } from '../../constant'
 
 import style from '../../styles/Calendar.css'
 
-const YearView = ({ calendarStore, setView }) => {
+const YearView = ({ variable, setView }) => {
   const {
     year,
     selectYear,
     decadeCounter,
     decadeBackward,
     decadeForward
-  } = calendarStore
+  } = variable
 
   const getDecadeTitle = (year, decadeCounter) => {
     const focusYear = year + decadeCounter * 10

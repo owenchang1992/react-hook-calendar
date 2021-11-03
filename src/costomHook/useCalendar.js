@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState } from 'react'
+import { useReducer, useEffect, useState, useCallback } from 'react'
 import calendarReducer from './calendarReducer'
 
 import {
@@ -32,68 +32,98 @@ const useCalendar = () => {
   const [calendar, dispatchCalendar] = useReducer(calendarReducer, INITIAL_DATE)
   const [days, setDays] = useState([])
 
-  const monthForward = () => {
-    dispatchCalendar({
-      type: MONTH_FORWARD
-    })
-  }
+  const monthForward = useCallback(
+    () => {
+      dispatchCalendar({
+        type: MONTH_FORWARD
+      })
+    }
+    ,[]
+  )
 
-  const monthBackward = () => {
-    dispatchCalendar({
-      type: MONTH_BACKWARD
-    })
-  }
+  const monthBackward = useCallback(
+    () => {
+      dispatchCalendar({
+        type: MONTH_BACKWARD
+      })
+    }
+    ,[]
+  )
 
-  const yearForward = () => {
-    dispatchCalendar({
-      type: YEAR_FORWARD
-    })
-  }
+  const yearForward = useCallback(
+    () => {
+      dispatchCalendar({
+        type: YEAR_FORWARD
+      })
+    }
+    ,[]
+  )
   
-  const yearBackward = () => {
-    dispatchCalendar({
-      type: YEAR_BACKWARD
-    })
-  }
+  const yearBackward = useCallback(
+    () => {
+      dispatchCalendar({
+        type: YEAR_BACKWARD
+      })
+    }
+    ,[]
+  )
 
-  const decadeForward = () => {
-    dispatchCalendar({
-      type: DECADE_FORWARD
-    })
-  }
+  const decadeForward = useCallback(
+    () => {
+      dispatchCalendar({
+        type: DECADE_FORWARD
+      })
+    }
+    ,[]
+  )
 
-  const decadeBackward = () => {
-    dispatchCalendar({
-      type: DECADE_BACKWARD
-    })
-  }
+  const decadeBackward = useCallback(
+    () => {
+      dispatchCalendar({
+        type: DECADE_BACKWARD
+      })
+    }
+    ,[]
+  )
 
-  const selectDay = (day) => {
-    dispatchCalendar({
-      type: SELECT_DAY,
-      payload: day
-    })
-  }
+  const selectDay = useCallback(
+    (day) => {
+      dispatchCalendar({
+        type: SELECT_DAY,
+        payload: day
+      })
+    }
+    ,[]
+  )
 
-  const selectDate = (date) => {
-    dispatchCalendar({
-      type: SELECT_DATE,
-      payload: date
-    })
-  }
+  const selectDate = useCallback(
+    (date) => {
+      dispatchCalendar({
+        type: SELECT_DATE,
+        payload: date
+      })
+    }
+    , []
+  )
 
-  const selectMonth = (month) => {
-    dispatchCalendar({
-      type: SELECT_MONTH,
-      payload: month
-    })
-  }
+  const selectMonth = useCallback(
+    (month) => {
+      dispatchCalendar({
+        type: SELECT_MONTH,
+        payload: month
+      })
+    }
+    , []
+  )
 
-  const selectYear = (year) => {
-    dispatchCalendar({
-      type: SELECT_YEAR,
-      payload: year
-    })
+  const selectYear = (month) => {
+    (year) => {
+      dispatchCalendar({
+        type: SELECT_YEAR,
+        payload: year
+      })
+    }
+    , []
   }
 
   const getDays = (calendar) => {

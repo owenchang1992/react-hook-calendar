@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 
 import useCalendar from '../costomHook/useCalendar'
 
@@ -12,18 +12,68 @@ import { DATE_VIEW, MONTH_VIEW, YEAR_VIEW } from '../constant'
 import style from '../styles/Calendar.css'
 
 const Calendar = () => {
-  const calendarStore = useCalendar()
+  const {
+    days,
+    selectedDate,
+    selectDate,
+    selectDay,
+    year,
+    yearForward,
+    yearBackward,
+    selectYear,
+    month,
+    monthForward,
+    monthBackward,
+    selectMonth,
+    decadeCounter,
+    decadeForward,
+    decadeBackward,
+  } = useCalendar()
 
   const [view, setView] = useState(null)
 
   const getView = (view) => {
     switch (view) {
       case DATE_VIEW:
-        return <DateView calendarStore={calendarStore} setView={setView}/>
+        return (
+          <DateView
+            variable={{
+              monthBackward,
+              monthForward,
+              selectDay,
+              days,
+              year,
+              month,
+            }}
+            setView={setView}
+          />
+        )
       case MONTH_VIEW: 
-        return <MonthView calendarStore={calendarStore} setView={setView}/>
+        return (
+          <MonthView 
+            variable={{
+              year,
+              yearBackward,
+              yearForward,
+              month,
+              selectMonth,
+            }}
+            setView={setView}
+          />
+        )
       case YEAR_VIEW: 
-        return <YearView calendarStore={calendarStore} setView={setView}/>
+        return (
+          <YearView
+            variable={{
+              year,
+              selectYear,
+              decadeCounter,
+              decadeBackward,
+              decadeForward
+            }}
+            setView={setView}
+          />
+        )
       default:
         return null
     }
@@ -31,7 +81,11 @@ const Calendar = () => {
 
   return (
     <div className={style.normalContainer}>
-      <DatePicker calendarStore={calendarStore} setView={setView}/>
+      <DatePicker
+        selectedDate={selectedDate}
+        selectDate={selectDate}
+        setView={setView}
+      />
       { getView(view) }
     </div>
   )

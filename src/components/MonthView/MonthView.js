@@ -4,14 +4,14 @@ import CalendarMonths from './CalendarMonths'
 import { YEAR_VIEW, DATE_VIEW } from '../../constant'
 import style from '../../styles/Calendar.css'
 
-const MonthView = ({ calendarStore, setView }) => {
+const MonthView = ({ variable, setView }) => {
   const {
     year,
     yearBackward,
     yearForward,
     month,
     selectMonth,
-  } = calendarStore
+  } = variable
 
   return (
     <div className={`${style.normalContainer} ${style.calendarContainer}`}>

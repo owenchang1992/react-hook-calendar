@@ -5,7 +5,7 @@ import CalendarDays from './CalendarDays'
 import { MONTH_VIEW, monthTitles } from '../../constant'
 import style from '../../styles/Calendar.css'
 
-const DateView = ({ calendarStore, setView }) => {
+const DateView = ({ variable, setView }) => {
   const {
     monthBackward,
     monthForward,
@@ -13,7 +13,7 @@ const DateView = ({ calendarStore, setView }) => {
     days,
     year,
     month,
-  } = calendarStore
+  } = variable
 
   const getDateViewTitle = (year, month) => {
     return `${monthTitles[month]} ${year}`
