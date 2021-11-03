@@ -20,7 +20,6 @@ const INITIAL_DATE = {
 
 const useCalendar = () => {
   const [calendar, dispatchCalendar] = useReducer(calendarReducer, INITIAL_DATE)
-  const [days, setDays] = useState([])
 
   const getDays = () => {
     const { year, month} = calendar?.displayDate
@@ -102,10 +101,6 @@ const useCalendar = () => {
 
   return {
     getDays,
-    selectedDate: calendar.selectedDate,
-    year: calendar.displayDate.year,
-    month: calendar.displayDate.month,
-    decadeCounter: calendar.displayDate.decadeCounter,
     calendar,
     dispatchCalendar,
   }
