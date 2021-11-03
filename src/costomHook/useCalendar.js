@@ -22,7 +22,7 @@ const useCalendar = () => {
   const [calendar, dispatchCalendar] = useReducer(calendarReducer, INITIAL_DATE)
   const [days, setDays] = useState([])
 
-  const getDays = (calendar) => {
+  const getDays = () => {
     const { year, month} = calendar?.displayDate
     // calculate days in current mouth
     const daysInMonth = 32 - new Date(year, month, 32).getDate()
@@ -97,15 +97,11 @@ const useCalendar = () => {
     // add days of next month to newDays
     addDays(newDays, 1, 41 - lastDayIndex, { monthState: NEXT_MONTH })
 
-    setDays(newDays)
+    return newDays
   }
 
-  useEffect(() => {
-    getDays(calendar)
-  }, [calendar])
-
   return {
-    days,
+    getDays,
     selectedDate: calendar.selectedDate,
     year: calendar.displayDate.year,
     month: calendar.displayDate.month,

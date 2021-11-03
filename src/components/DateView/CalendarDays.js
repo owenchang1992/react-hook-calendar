@@ -3,9 +3,7 @@ import style from '../../styles/Calendar.css'
 import { CURRENT_MONTH, SELECTEDDAY, TODAY } from '../../constant'
 import { findTag } from '../../utils'
 
-const CalendarDays = ({ days, onDateSelected }) => {
-  if (!days) return null;
-
+const CalendarDays = ({ getDays, onDateSelected }) => {
   const getClass = (day) => {
     if (findTag(day, SELECTEDDAY)) return style.selectedItem
     if (findTag(day, TODAY)) return style.today
@@ -16,7 +14,7 @@ const CalendarDays = ({ days, onDateSelected }) => {
   return (
     <div className={style.row}>
       {
-        days.map((day) => (
+        getDays().map((day) => (
           <div
             key={`${day.tags[0]} ${day.title}`}
             className={`${style.item} ${getClass(day)}`}

@@ -13,7 +13,7 @@ import style from '../styles/Calendar.css'
 
 const Calendar = () => {
   const {
-    days,
+    getDays,
     calendar: {
       selectedDate,
       displayDate: {
@@ -32,7 +32,7 @@ const Calendar = () => {
       case DATE_VIEW:
         return (
           <DateView
-            days={days}
+            getDays={getDays}
             month={month}
             year={year}
             dispatchCalendar={dispatchCalendar}

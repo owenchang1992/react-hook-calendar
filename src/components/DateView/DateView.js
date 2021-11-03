@@ -12,7 +12,7 @@ import {
 import style from '../../styles/Calendar.css'
 
 const DateView = ({
-  days,
+  getDays,
   year,
   month,
   setView,
@@ -47,7 +47,7 @@ const DateView = ({
       />
       <WeekTitles />
       <CalendarDays
-        days={days}
+        getDays={getDays}
         onDateSelected={(day) => {
           setView(null)
           selectDay(day)
