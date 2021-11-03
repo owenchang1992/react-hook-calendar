@@ -11,13 +11,13 @@ import {
 } from '../../constant'
 import style from '../../styles/Calendar.css'
 
-const DateView = ({ variable, setView, dispatchCalendar }) => {
-  const {
-    days,
-    year,
-    month,
-  } = variable
-
+const DateView = ({
+  days,
+  year,
+  month,
+  setView,
+  dispatchCalendar
+}) => {
   const getDateViewTitle = (year, month) => {
     return `${monthTitles[month]} ${year}`
   }

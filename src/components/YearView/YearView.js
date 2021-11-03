@@ -13,12 +13,12 @@ import {
 
 import style from '../../styles/Calendar.css'
 
-const YearView = ({ variable, setView, dispatchCalendar }) => {
-  const {
-    year,
-    decadeCounter,
-  } = variable
-
+const YearView = ({
+  year,
+  decadeCounter,
+  setView,
+  dispatchCalendar
+}) => {
   const getDecadeTitle = (year, decadeCounter) => {
     const focusYear = year + decadeCounter * 10
 

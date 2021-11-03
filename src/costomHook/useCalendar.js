@@ -2,16 +2,6 @@ import { useReducer, useEffect, useState, useCallback } from 'react'
 import calendarReducer from './calendarReducer'
 
 import {
-  MONTH_FORWARD,
-  MONTH_BACKWARD,
-  YEAR_FORWARD,
-  YEAR_BACKWARD,
-  DECADE_FORWARD,
-  DECADE_BACKWARD,
-  SELECT_DAY,
-  SELECT_DATE,
-  SELECT_MONTH,
-  SELECT_YEAR,
   PREVIOUS_MONTH,
   NEXT_MONTH,
   CURRENT_MONTH,
@@ -120,6 +110,7 @@ const useCalendar = () => {
     year: calendar.displayDate.year,
     month: calendar.displayDate.month,
     decadeCounter: calendar.displayDate.decadeCounter,
+    calendar,
     dispatchCalendar,
   }
 }

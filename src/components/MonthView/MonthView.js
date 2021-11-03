@@ -10,12 +10,12 @@ import {
 } from '../../constant'
 import style from '../../styles/Calendar.css'
 
-const MonthView = ({ variable, setView, dispatchCalendar }) => {
-  const {
-    year,
-    month,
-  } = variable
-
+const MonthView = ({
+  year,
+  month,
+  setView,
+  dispatchCalendar
+}) => {
   const yearBackward = () => {
     dispatchCalendar({ type: YEAR_BACKWARD })
   }

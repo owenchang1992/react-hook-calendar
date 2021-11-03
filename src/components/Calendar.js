@@ -14,10 +14,14 @@ import style from '../styles/Calendar.css'
 const Calendar = () => {
   const {
     days,
-    selectedDate,
-    year,
-    month,
-    decadeCounter,
+    calendar: {
+      selectedDate,
+      displayDate: {
+        year,
+        month,
+        decadeCounter,
+      }
+    },
     dispatchCalendar,
   } = useCalendar()
 
@@ -28,11 +32,9 @@ const Calendar = () => {
       case DATE_VIEW:
         return (
           <DateView
-            variable={{
-              days,
-              year,
-              month,
-            }}
+            days={days}
+            month={month}
+            year={year}
             dispatchCalendar={dispatchCalendar}
             setView={setView}
           />
@@ -40,10 +42,8 @@ const Calendar = () => {
       case MONTH_VIEW: 
         return (
           <MonthView 
-            variable={{
-              year,
-              month,
-            }}
+            year={year}
+            month={month}
             dispatchCalendar={dispatchCalendar}
             setView={setView}
           />
@@ -51,10 +51,8 @@ const Calendar = () => {
       case YEAR_VIEW: 
         return (
           <YearView
-            variable={{
-              year,
-              decadeCounter,
-            }}
+            year={year}
+            decadeCounter={decadeCounter}
             dispatchCalendar={dispatchCalendar}
             setView={setView}
           />
