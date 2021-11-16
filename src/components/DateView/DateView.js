@@ -2,21 +2,39 @@ import React from 'react'
 import CalendarHeader from '../CalendarHeader'
 import WeekTitles from './WeekTitles'
 import CalendarDays from './CalendarDays'
-import { MONTH_VIEW, monthTitles } from '../../constant'
+import {
+  MONTH_VIEW,
+  MONTH_FORWARD,
+  MONTH_BACKWARD,
+  SELECT_DAY,
+  monthTitles,
+} from '../../constant'
 import style from '../../styles/Calendar.css'
 
-const DateView = ({ calendarStore, setView }) => {
-  const {
-    monthBackward,
-    monthForward,
-    selectDay,
-    days,
-    year,
-    month,
-  } = calendarStore
-
+const DateView = ({
+  getDays,
+  year,
+  month,
+  setView,
+  dispatchCalendar
+}) => {
   const getDateViewTitle = (year, month) => {
     return `${monthTitles[month]} ${year}`
+  }
+
+  const monthBackward = () => {
+    dispatchCalendar({ type: MONTH_BACKWARD })
+  }
+
+  const monthForward = () => {
+    dispatchCalendar({ type: MONTH_FORWARD })
+  }
+
+  const selectDay = (day) => {
+    dispatchCalendar({
+      type: SELECT_DAY,
+      payload: day
+    })
   }
 
   return (
@@ -29,7 +47,7 @@ const DateView = ({ calendarStore, setView }) => {
       />
       <WeekTitles />
       <CalendarDays
-        days={days}
+        getDays={getDays}
         onDateSelected={(day) => {
           setView(null)
           selectDay(day)

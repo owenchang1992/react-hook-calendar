@@ -3,10 +3,10 @@ import style from '../../styles/Calendar.css'
 
 const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
-const WeekTitles = () => (
+const WeekTitles = React.memo(() => (
   <div className={`${style.weeks} ${style.row}`}>
     {weeks.map((title) => <div key={title} className={`${style.item} ${style.weekItem}`}>{title}</div>)}
   </div>
-)
+))
 
 export default WeekTitles

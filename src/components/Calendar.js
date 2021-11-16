@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 
 import useCalendar from '../costomHook/useCalendar'
 
@@ -12,18 +12,51 @@ import { DATE_VIEW, MONTH_VIEW, YEAR_VIEW } from '../constant'
 import style from '../styles/Calendar.css'
 
 const Calendar = () => {
-  const calendarStore = useCalendar()
+  const {
+    getDays,
+    calendar: {
+      selectedDate,
+      displayDate: {
+        year,
+        month,
+        decadeCounter,
+      }
+    },
+    dispatchCalendar,
+  } = useCalendar()
 
   const [view, setView] = useState(null)
 
   const getView = (view) => {
     switch (view) {
       case DATE_VIEW:
-        return <DateView calendarStore={calendarStore} setView={setView}/>
+        return (
+          <DateView
+            getDays={getDays}
+            month={month}
+            year={year}
+            dispatchCalendar={dispatchCalendar}
+            setView={setView}
+          />
+        )
       case MONTH_VIEW: 
-        return <MonthView calendarStore={calendarStore} setView={setView}/>
+        return (
+          <MonthView 
+            year={year}
+            month={month}
+            dispatchCalendar={dispatchCalendar}
+            setView={setView}
+          />
+        )
       case YEAR_VIEW: 
-        return <YearView calendarStore={calendarStore} setView={setView}/>
+        return (
+          <YearView
+            year={year}
+            decadeCounter={decadeCounter}
+            dispatchCalendar={dispatchCalendar}
+            setView={setView}
+          />
+        )
       default:
         return null
     }
@@ -31,7 +64,11 @@ const Calendar = () => {
 
   return (
     <div className={style.normalContainer}>
-      <DatePicker calendarStore={calendarStore} setView={setView}/>
+      <DatePicker
+        selectedDate={selectedDate}
+        setView={setView}
+        dispatchCalendar={dispatchCalendar}
+      />
       { getView(view) }
     </div>
   )

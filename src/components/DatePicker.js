@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import Icon from './Icon'
-import { DATE_VIEW } from '../constant'
+import { DATE_VIEW, SELECT_DATE } from '../constant'
 import { date2ISOString } from '../utils'
 import style from '../styles/Calendar.css'
 
-const DatePicker = ({ calendarStore, setView }) => {
-  const { selectedDate, selectDate } = calendarStore
-
+const DatePicker = memo(({ selectedDate, setView, dispatchCalendar }) => {
   const getTitle = (date) => date2ISOString(date).substring(0, 10)
 
   const [inputString, setInputString] = useState(getTitle(selectedDate))
@@ -35,6 +33,13 @@ const DatePicker = ({ calendarStore, setView }) => {
     return () => input.removeEventListener('keyup', checkDate)
   }, [inputString])
 
+  const selectDate = (date) => {
+    dispatchCalendar({
+      type: SELECT_DATE,
+      payload: date
+    })
+  }
+
   useEffect(() => {
     setInputString(getTitle(selectedDate))
   }, [selectedDate])
@@ -61,6 +66,6 @@ const DatePicker = ({ calendarStore, setView }) => {
       />
     </div>
   )
-}
+})
 
 export default DatePicker
